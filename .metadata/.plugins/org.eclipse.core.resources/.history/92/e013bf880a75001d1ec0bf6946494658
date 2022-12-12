@@ -1,0 +1,8 @@
+Feature: Get Request API Test
+
+@test
+Scenario: Get Account Test
+Given url "https://tek-insurance-api.azurewebsites.net"
+* def token = call read("GenerateToken.feature")
+* def tokenValue = token.response.token
+* print tokenValue

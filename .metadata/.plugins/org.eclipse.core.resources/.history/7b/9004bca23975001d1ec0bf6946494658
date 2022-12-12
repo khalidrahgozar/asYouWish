@@ -1,0 +1,14 @@
+Feature : Validate the Token
+
+@test3
+Scenario: The token should be validate
+* url "https://tek-insurance-api.azurewebsites.net"
+* def token = call read("GenerateToken.feature")
+* def tokenValue = token.response.token
+* path "/api/token/verify"
+* param token = tokenValue
+* param username= "supervisor"
+* method get
+* status 200
+* print response
+

@@ -1,0 +1,17 @@
+package justForPractice;
+
+import java.util.ArrayList;
+
+public class MyPhone {
+	public static void main (String[] args) {
+ArrayList <Integer> name = new ArrayList<Integer>();
+name.add(1);
+name.add(2);
+name.add(3);
+System.out.println(name);
+name.set(2, 34);
+System.out.println(name);
+		
+	}
+
+}

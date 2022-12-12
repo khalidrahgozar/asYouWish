@@ -1,0 +1,24 @@
+package justForPractice;
+
+import java.util.ArrayList;
+
+public class MyPhone {
+	public static void main (String[] args) {
+ArrayList <Integer> name = new ArrayList<Integer>();
+name.add(1);
+name.add(2);
+name.add(3);
+System.out.println(name);
+name.set(2, 34);
+System.out.println(name);
+String given="wefeqf878979797fewfewrf879797efds&^&^*^*^";
+String replaced=given.replaceAll("[a-zA-Z]", "");
+int alphaChar=given.length()-replaced.length();
+System.out.println(alphaChar);
+String khalid = "hello wattan";
+StringBuffer emad = new StringBuffer(khalid);
+System.out.println(emad.reverse());
+		
+	}
+
+}

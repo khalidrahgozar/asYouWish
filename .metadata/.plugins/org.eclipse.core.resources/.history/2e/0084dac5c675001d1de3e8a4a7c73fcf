@@ -1,0 +1,32 @@
+Feature : Post Request Tests
+
+@postCall
+ Scenaria: Verify post Request Method
+  Given url "https://tek-insurance-api.azurewebsites.net"
+  * def token = call read("GenerateToken.feature")
+* def tokenValue = token.response.token
+* header Authorization = "Bearer " + tokenValue
+* path "/api/accounts/add-primary-account"
+* request 
+"""
+{
+"email":"testPostman0231@tekschool.com",
+
+"firstName":"Panthers",
+
+"lastName":"TEK",
+
+"title":"MR",
+
+"gender":"MALE",
+
+"maritalStatus":"SINGLE",
+
+"employmentStatus":"Student",
+
+"dateOfBirth": "1990-01-20"
+}
+"""
+* method post
+* status 201
+* print response

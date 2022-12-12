@@ -1,0 +1,320 @@
+package tek.sdet.framework.steps;
+
+
+import java.util.List;
+import java.util.Map;
+
+import org.junit.Assert;
+
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import tek.sdet.framework.pages.POMFactory;
+import tek.sted.framework.utility.CommonUtility;
+
+public class RetailAccountPageSteps extends CommonUtility {
+	POMFactory factory = new POMFactory();
+	@When("User click on Account option")
+	public void userClickOnAccountOption() {
+		click(factory.accountPage().accountOption);
+		logger.info("user clicked on account option");
+	   
+	}
+	@When("User update Name {string}and Phone {string}")
+	public void userUpdateNameNameValueAndPhonePhoneValue(String name, String phone) {
+		sendText(factory.accountPage().nameInput , name);
+		sendText(factory.accountPage().phoneInput , phone);
+		logger.info("user updated name and phone");
+		
+
+	}
+	@When("User click on Update button")
+	public void userClickOnUpdateButton() {
+		click(factory.accountPage().updateButton);
+		logger.info("user clicked on update button");
+
+	}
+	@Then("user profile information should be updated")
+	public void userProfileInformationShouldBeUpdated() {
+		waitTillPresence(factory.accountPage().informationSuccessfully);
+		Assert.assertTrue(isElementDisplayed(factory.accountPage().informationSuccessfully));
+		logger.info("user profile information shuold be updated");
+
+	}
+	}
+//	
+//
+//
+//	@Given("User is on retail website")
+//	public void userIsOnRetailWebsite() {
+//	String expectedTitle = "React App";
+//	String actualTitle = getTitle();// wrote this one in CommonUtility
+//	Assert.assertEquals(expectedTitle, actualTitle);
+//	logger.info(actualTitle +" is equal to "+ expectedTitle);
+//	}
+//	
+//	@Then("User verify retail page logo is present")
+//	public void userVerifyRetailPageLogoIsPresent() {
+//	Assert.assertTrue(isElementDisplayed(factory.homePage().logo));
+//	logger.info("logo is present");
+//	slowDown();
+//	}
+//	
+//	@When("User change the category to {string}")
+//	public void userChangeTheCategoryTo(String value) {
+//		selectByVisibleText(factory.homePage().allDepartments,value);
+//		logger.info(value + " was selected from the drop down");
+//	    
+//	}
+//	@When("User search for an item {string}")
+//	public void userSearchForAnItem(String value) {
+//		sendText(factory.homePage().searchInputField,value);
+//		logger.info("user entered "+value);
+//	  
+//	}
+//	@When("User click on Search icon")
+//	public void userClickOnSearchIcon() {
+//		click(factory.homePage().searchButton);
+//		logger.info("user clicked on search button");
+//	}
+//	@Then("Item should be present")
+//	public void itemShouldBePresent() {
+//		Assert.assertTrue(isElementDisplayed(factory.homePage().playStationItem));
+//		logger.info("item is present");
+//	    
+//	}
+//
+//	@When("User click on All section")
+//	public void userClickOnAllSection() {
+//	click(factory.homePage().allElement);
+//	logger.info("user clicked on All element");
+//	slowDown();
+//	}
+//
+//	@Then("User verifies {string} is present")
+//	public void user_verifies_is_present(String value) {
+//	String expectedValue = value;
+//	String actualValue = getElementText(factory.homePage().shopByDepartment);
+//	Assert.assertEquals(expectedValue, actualValue);
+//	logger.info(expectedValue + " is present");
+//	slowDown();
+//	}
+//	
+//	
+//	@And("User verifies cart icon is present")
+//	public void userVerifiesCartIconIsPresent() {
+//		slowDown();
+//		HighlightElement(factory.homePage().cart);
+//		slowDown();
+//		Assert.assertTrue(isElementDisplayed(factory.homePage().cart));
+//		logger.info("cart icon is present");
+//		scrollPageDownWithJS();
+//		slowDown();
+//	}
+//	@When("User click on Update button")
+//	public void userClickOnUpdateButton() {
+//		click(factory.signInPage().uptdateButton);
+//		logger.info("User clicked on update Button");
+//	
+//	}
+//	@Then("user profile information should be updated")
+//	public void userProfileInformationShouldBeUpdated() {
+//		slowDown();
+//		Assert.assertTrue(isElementDisplayed(factory.signInPage().personalInfo));
+//		logger.info("User profile information updated successfully");
+//	}
+//	
+//	@When("User click on Account option")
+//	public void userClickOnAccountOption() {
+//		click(factory.signInPage().accountLink);
+//		logger.info("User clicked On Account Option");
+//	
+//	}
+//	@When("User enter below information")
+//	public void userEnterBelowInformation(DataTable dataTable) {
+//		List<Map<String , String>> createPass = dataTable.asMaps(String.class , String.class);
+//		sendText(factory.signInPage().previousPass , createPass.get(0).get("previousPassword"));
+//		sendText(factory.signInPage().newPass , createPass.get(0).get("newPassword"));
+//		sendText(factory.signInPage().confirmPass , createPass.get(0).get("confirmPassword"));
+//		logger.info("User entered the above information");
+//
+//	   
+//	 
+//	}
+//	@When("User click on Change Password button")
+//	public void userClickOnChangePasswordButton()  {
+//		click(factory.signInPage().changePass);
+//		logger.info("User clicked on Change Password Button");
+//
+//	}
+//	@Then("a message should be displayed ‘Password Updated Successfully’")
+//	public void aMessageShouldBeDisplayedPasswordUpdatedSuccessfully()  {
+//		slowDown();
+//		Assert.assertTrue(isElementDisplayed(factory.signInPage().successfullyChanged));
+//		logger.info("Message appeared");
+//		
+//	}
+//@And("User click on Add a payment method link")
+//public void userClickOnAddAPaymentMethodLink() {
+//	click(factory.signInPage().paymentMethod);
+//	logger.info("User clicked on add a payment method link");
+//		System.out.println("");
+//
+//}         
+//@And("User fill Debit or credit card information")
+//public void userFillDebitOrCreditCardInformation(DataTable dataCredit) {
+//	List<Map<String , String>> credit = dataCredit.asMaps(String.class , String.class);
+//	slowDown();
+//			sendText(factory.signInPage().cardNumber , credit.get(0).get("cardNumber"));
+//			sendText(factory.signInPage().nameOnCard , credit.get(0).get("nameOnCard"));
+////			getElementText(factory.signInPage().expirationDate);
+////			slowDown();
+////			getElementText(factory.signInPage().expirationYear);
+////			
+//			
+//			click(factory.signInPage().expirationDate);
+//			click(factory.signInPage().elevenDay);
+//			click(factory.signInPage().expirationYear);
+//			click(factory.signInPage().yearTweenty);
+//			sendText(factory.signInPage().securityCode , credit.get(0).get("securityCode"));
+//			logger.info("User Filled debit or credit card information");
+//	
+//}
+//@And("User click on Add your card button")
+//public void userClickOnAddYourCardButton() {
+//	click(factory.signInPage().addCardClick);
+//	logger.info("User Clicked On add your card Button");
+//	
+//}
+//@Then("a message should be displayed ‘Payment Method added successfully’")
+//public void AMessageShouldBeDisplayed() {
+//	slowDown();
+//	Assert.assertTrue(isElementDisplayed(factory.signInPage().successfullMessage));
+//	logger.info("A message poped up");
+//}
+//@When("User click on Edit option of card section")
+//public void userClickOnEditOptionOfCardSection() {
+//	click(factory.signInPage().editOption);
+//logger.info("User clicke on edit option");
+// 
+//}
+//@When("user edit information with below data")
+//public void userEditInformationWithBelowData(DataTable dataTable) {
+//	List<Map<String , String>> edit = dataTable.asMaps(String.class , String.class);
+//   sendText(factory.signInPage().cardNumber2 , edit.get(0).get("cardNumber"));
+//     sendText(factory.signInPage().nameONCard2 , edit.get(0).get("nameOnCard"));
+//     selectByVisibleText(factory.signInPage().expirationMonth2, edit.get(0).get("expirationMonth"));
+//     selectByVisibleText(factory.signInPage().expirationYear2 , edit.get(0).get("expirationYear"));
+////   click(factory.signInPage().expirationMonth2);
+////   click(factory.signInPage().elevenMonth2);
+////   click(factory.signInPage().expirationYear2);
+////   click(factory.signInPage().tweentySix);
+//   sendText(factory.signInPage().securityCode2 , edit.get(0).get("securityCode"));
+//   logger.info("User edited information with below data");
+//}
+//@When("user click on Update Your Card button")
+//public void userClickOnUpdateYourCardButton() {
+//	click(factory.signInPage().updateYourCard);
+//	logger.info("User clicked on update your card button");
+//   
+//}
+//@Then("a message should be displayed ‘Payment Method updated Successfully’")
+//public void aMessageShouldBeDisplayedPaymentMethodUpdatedSuccessfully() {
+//	slowDown();
+//	Assert.assertTrue(isElementDisplayed(factory.signInPage().successfullMessage2));
+//	logger.info("A message should be displayed");
+//   
+//}
+//@And("User click on remove option of card section")
+//public void userClickOnRemoveOptionOFCardSection() {
+//	click(factory.signInPage().removeCardInfo);
+//	logger.info("Card section removed successfully");
+//}
+//@Then("payment details should be removed")
+//public void paymentDetailsShouldBeRemoved() {
+//	slowDown();
+//	Assert.assertTrue(isElementDisplayed(factory.signInPage().removedValidation));
+//	logger.info("I validate that card section has removed");
+//	
+//}
+//@And("User click on Add address option")
+//public void userClickOnAddAdressOption() {
+//	click(factory.signInPage().addNewAddress);
+//	logger.info("user clicked on Add address option");
+//	
+//}
+//@And("user fill new address form with below information")
+//public void userFillNewAdressFormWithBelowInfo(DataTable data) {
+//	List<Map<String , String>> adress = data.asMaps(String.class , String.class);
+//	selectByVisibleText(factory.signInPage().countryDropDown , adress.get(0).get("country") );
+//	sendText(factory.signInPage().fullName , adress.get(0).get("fullName"));
+//	sendText(factory.signInPage().phoneNum , adress.get(0).get("phoneNumber"));
+//	sendText(factory.signInPage().streetAdress , adress.get(0).get("streetAddress"));
+//	sendText(factory.signInPage().apartmentAdress , adress.get(0).get("apt"));
+//	sendText(factory.signInPage().cityAdress , adress.get(0).get("city"));
+//	selectByVisibleText(factory.signInPage().stateAdress, adress.get(0).get("state"));
+//	sendText(factory.signInPage().zipCodeAddress , adress.get(0).get("zipCode"));
+//	logger.info("User filled new adress form");
+//	
+//	
+//}
+//@And("User click Add Your Address button")
+//public void userClickAddYourAddressButton() {
+//	click(factory.signInPage().addYourAddress);
+//	logger.info("User clicked Add your adress button");
+//	
+//}
+//@Then("a message should be displayed ‘Address Added Successfully’")
+//public void aMessageshouldBeDisplayed() {
+//	slowDown();
+//	Assert.assertTrue(isElementDisplayed(factory.signInPage().addSuccessfully));
+//	logger.info("A message displayed");
+//	
+//}
+//@And("User click on edit address option")
+//public void userClickOnEditAddressOption() {
+//	click(factory.signInPage().editAdress);
+//	logger.info("User clicked and edited adress option");
+//   
+//}
+//@And("user fill new address form with below informatio")
+//public void userFillNewAddressFormWithBelowInformation(DataTable dataTable) {
+//	List<Map<String , String>> editAdress = dataTable.asMaps(String.class , String.class);
+//	selectByVisibleText(factory.signInPage().countryDropDown , editAdress.get(0).get("country"));
+//	sendText(factory.signInPage().fullName , editAdress.get(0).get("fullName"));
+//	sendText(factory.signInPage().phoneNum , editAdress.get(0).get("phoneNumber"));
+//	sendText(factory.signInPage().streetAdress , editAdress.get(0).get("streetAddress"));
+//	sendText(factory.signInPage().apartmentAdress , editAdress.get(0).get("apt"));
+//	sendText(factory.signInPage().cityAdress , editAdress.get(0).get("city"));
+//	selectByVisibleText(factory.signInPage().stateAdress, editAdress.get(0).get("state"));
+//	sendText(factory.signInPage().zipCodeAddress , editAdress.get(0).get("zipCode"));
+//	logger.info("User filled new adress form");
+//	
+//}
+//@And("User click update Your Address button")
+//public void userClickUpdateYourAddressButton() {
+//	click(factory.signInPage().updateYourAdress2);
+//	logger.info("User clicked update your Adress button");
+//
+//}
+//@Then("a message should be displayed ‘Address Updated Successfully’")
+//public void aMessageShouldBeDisplayedAddressUpdatedSuccessfully() {
+//	Assert.assertTrue(isElementDisplayed(factory.signInPage().successfulyedited));
+//logger.info("A message has displayed");
+//}
+//@And("User click on remove option of Address section")
+//public void userClickOnRemoveOptionOFAddressSection() throws InterruptedException {
+//	Thread.sleep(5000);
+//	click(factory.signInPage().removeAdress);
+//	logger.info("User clicked on Remove option of address section");
+//	
+//}
+//@Then("Address details should be removed")
+//public void addressDetailsShouldBeRemoved() {
+//	Assert.assertTrue(isElementDisplayed(factory.signInPage().walletValidation));
+//	logger.info("Wallet element appeared");
+//	
+//}
+//}

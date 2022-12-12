@@ -1,0 +1,12 @@
+Feature: Get Request API Test
+
+@test
+Scenario: Get Account Test
+Given url "https://tek-insurance-api.azurewebsites.net"
+* def token = call read("GenerateToken.feature")
+* def tokenValue = token.response.token
+* header Authorization = "Bearer " + tokenValue
+* path "/api/accounts/get-primary-account"
+* method get
+* param primaryPersonId = "2758"
+* print response

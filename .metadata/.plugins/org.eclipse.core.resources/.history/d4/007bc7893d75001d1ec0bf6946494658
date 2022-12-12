@@ -1,0 +1,22 @@
+Feature : Verify Tek Insurance Token
+
+Background
+* url "https://tek-insurance-api.azurewebsites.net"
+* def token = call read("GenerateToken.feature")
+* def tokenValue = token.response.token
+* path "/api/token/verify"
+* param token = tokenValue
+
+
+Scenario: Verify Valid Token
+* param username = "supervisor"
+* method get
+* status 200
+* print response
+
+@test3
+Scenario: Verify with invalid username
+* param username = "tekSupport"
+* method get
+* status 200
+* print response
